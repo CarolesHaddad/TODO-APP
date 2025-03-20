@@ -1,34 +1,19 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:15
-    container_name: todo-db
-    restart: always
-    environment:
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_DATABASE}
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
   backend:
     build: ./backend
     container_name: todo-backend
     restart: always
     environment:
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_DATABASE=${DB_DATABASE}
-      - DB_HOST=db
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=caroles-2017
+      - DB_DATABASE=aws-db
+      - DB_HOST=aws-db.ct5vhtaclqht.us-east-1.rds.amazonaws.com
       - DB_PORT=5432
       - PORT=3000
     ports:
       - "3000:3000"
-    depends_on:
-      - db
     volumes:
       - ./backend:/app
       - /app/node_modules
@@ -41,6 +26,3 @@ services:
       - "80:80"
     depends_on:
       - backend
-
-volumes:
-  pgdata:

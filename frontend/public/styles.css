@@ -1,6 +1,6 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Fundo gradiente */
+    font-family: 'Roboto Mono', sans-serif;
+    background: linear-gradient(135deg, #cb11a0, #2575fc); /* Fundo gradiente */
     color: #fff; /* Texto branco */
     margin: 0;
     padding: 0;
@@ -54,7 +54,7 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #0f5c20;
 }
 
 ul#task-list {
